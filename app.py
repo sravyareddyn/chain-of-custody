@@ -158,6 +158,23 @@ def logs():
 
     return render_template('logs.html', logs=logs)
 
+@app.route('/tamper/<int:id>', methods=['POST'])
+def tamper(id):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    c.execute("SELECT filename FROM evidence WHERE id=?", (id,))
+    file = c.fetchone()[0]
+
+    filepath = os.path.join(app.config['UPLOAD_FOLDER'], file)
+
+    with open(filepath, "a") as f:
+        f.write("tampered")
+
+    conn.close()
+
+    return redirect(url_for('view', eid=id))
+
 # ---------------- RUN ----------------
 if __name__ == '__main__':
     if not os.path.exists('uploads'):
