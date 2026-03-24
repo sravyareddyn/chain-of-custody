@@ -48,6 +48,9 @@ Status: {{ status }}
 <form action="/verify/{{ evidence[0] }}" method="post">
 <button>Re-Verify Integrity</button>
 </form>
+  <form action="/tamper/{{ evidence[0] }}" method="post">
+    <button>Tamper (Demo)</button>
+</form>
 
 <br>
 <a href="/dashboard">Back</a>
