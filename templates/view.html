@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<title>View Evidence</title>
+</head>
+
+<body>
+<div class="container">
+
+<h2>Evidence Details</h2>
+
+<p><b>Name:</b> {{ evidence[1] }}</p>
+<p><b>Uploaded By:</b> {{ evidence[3] }}</p>
+<p><b>Case ID:</b> {{ evidence[6] }}</p>
+<p><b>Case Name:</b> {{ evidence[7] }}</p>
+
+<h3>Evidence Preview</h3>
+
+{% set filename = evidence[2] %}
+
+{% if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.jpeg') %}
+<img src="/uploads/{{ filename }}" width="300">
+
+{% elif filename.endswith('.mp4') %}
+<video width="320" controls>
+<source src="/uploads/{{ filename }}">
+</video>
+
+{% elif filename.endswith('.mp3') %}
+<audio controls>
+<source src="/uploads/{{ filename }}">
+</audio>
+
+{% else %}
+<a href="/uploads/{{ filename }}">Download Evidence</a>
+{% endif %}
+
+<h3>Hash Comparison</h3>
+
+<p><b>Original Hash:</b> {{ original_hash }}</p>
+<p><b>Current Hash:</b> {{ current_hash }}</p>
+
+<h2 class="{{ 'intact' if status == 'INTACT ✅' else 'tampered' }}">
+Status: {{ status }}
+</h2>
+
+<form action="/verify/{{ evidence[0] }}" method="post">
+<button>Re-Verify Integrity</button>
+</form>
+
+<br>
+<a href="/dashboard">Back</a>
+
+</div>
+</body>
+</html>

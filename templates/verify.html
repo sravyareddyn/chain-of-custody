@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Integrity Check</title>
+
+<style>
+body {
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 12px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+h2 {
+    color: #38bdf8;
+}
+
+.status {
+    font-size: 22px;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.safe {
+    color: #22c55e;
+}
+
+.tampered {
+    color: #ef4444;
+}
+
+.button {
+    background: #38bdf8;
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background: #0ea5e9;
+}
+
+.back {
+    display: block;
+    margin-top: 20px;
+    color: #38bdf8;
+    text-decoration: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🔍 Integrity Check Result</h2>
+
+<div class="status">
+    {{ status }}
+</div>
+
+<a href="/" class="back">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<div class="container">
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Upload Evidence</title>
+</head>
+<body>
+    <h2>Upload Evidence</h2>
+<form action="/upload" method="post" enctype="multipart/form-data">
+
+    User: <input type="text" name="user" required><br><br>
+    
+    Case ID: <input type="text" name="case_id" required><br><br>
+    
+    Case Name: <input type="text" name="case_name"><br><br>
+    
+    File: <input type="file" name="file" required><br><br>
+    
+    <button type="submit">Register Evidence</button>
+    
+    </form>
+    <br>
+    <a href="/dashboard">Go to Dashboard</a>
+</body>
+</html>
+</div>
